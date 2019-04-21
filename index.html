@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .ball {
+      background: linear-gradient(#ff9b9b 50%, #196dbb 50%);
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+  <div class="ball"></div>
+  <script src="./Transform.js"></script>
+  <script>
+    const multi = [
+      {
+        type: 'translate',
+        value: '0, 0'
+      },
+      {
+        type: 'scale',
+        value: 0.5
+      },
+      {
+        type: 'rotate',
+        value: 0
+      }
+    ];
+
+    Transform.config.defaultTime = 600;
+    const tf = new MultiTransform('.ball');
+
+    tf
+      .translate('200px, 200px')
+      .rotate(180, 1000)
+      .translate('0, 0')
+      .translate('100px, 100px')
+      .scale(1.5)
+      .sleep(1000)
+      .multi(multi)
+      .done();
+  </script>
+</body>
+</html>
